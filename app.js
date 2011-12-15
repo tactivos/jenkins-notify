@@ -16,7 +16,7 @@ app.post('/', function(req, res) {
 	});
 
 	req.on('end', function(){
-		console.log(JSON.parse(querystring.decode(content)));
+		console.log(querystring.decode(content));
 	});
 
     res.end();
