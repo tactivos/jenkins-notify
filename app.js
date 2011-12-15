@@ -4,7 +4,8 @@ var express = require('express')
 var app = module.exports = express.createServer();
 
 app.get('/', function(req, res) {
-	res.send("works");
+	res.statusCode = 200;
+	res.end();
 });
 
 app.post('/', function(req, res) {
