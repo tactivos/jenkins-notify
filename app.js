@@ -7,16 +7,7 @@ app.get('/', function(req, res) {
 });
 
 app.post('/', function(req, res) {
-	var body = '';
-
-    req.on('data', function (data) {
-        body += data;
-    });
-
-    req.on('end', function () {
-    	console.log(body);
-    });	
-
+	console.log(req);
     res.end();
 });
 	
