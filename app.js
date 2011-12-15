@@ -16,9 +16,8 @@ app.post('/', function(req, res) {
 	});
 
 	req.on('end', function(){
-		var decodedContent = querystring.decode(content);
-		console.log("payload: " + decodedContent["payload"]);
-		console.log(JSON.parse(decodedContent));
+		var message = querystring.decode(content);
+		console.log(JSON.parse(message['payload']));
 	});
 
     res.end();
