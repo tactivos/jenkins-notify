@@ -7,7 +7,7 @@ app.get('/', function(req, res) {
 });
 
 app.post('/', function(req, res) {
-	console.log(JSON.parse(res.body));
+	console.log(res.body);
 
 	res.send(JSON.parse(res.body));
 	res.end();
