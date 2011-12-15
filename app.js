@@ -17,7 +17,9 @@ app.post('/', function(req, res) {
 
 	req.on('end', function(){
 		var message = querystring.decode(content);
-		console.log(JSON.parse(message['payload']));
+		var push = JSON.parse(message['payload']);
+
+		console.log("http://localhost:8080/job/" + push.repository.owner.name + "-" + push.repository.name + "/build?token=TOKEN&branch=" + push.refs);
 	});
 
     res.end();
