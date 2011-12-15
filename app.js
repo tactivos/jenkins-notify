@@ -7,7 +7,17 @@ app.get('/', function(req, res) {
 });
 
 app.post('/', function(req, res) {
-	console.log(req);
+	
+	var content = '';
+
+	req.on('data', function(chunk){
+  		content += chunk;
+	});
+
+	req.on('end', function(){
+		console.log(content);
+	});
+
     res.end();
 });
 	
