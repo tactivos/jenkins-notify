@@ -19,7 +19,7 @@ app.post('/', function(req, res) {
 		var message = querystring.decode(content);
 		var push = JSON.parse(message['payload']);
 
-		console.log("http://192.168.84.153:8080/job/" + push.repository.owner.name + "-" + push.repository.name + push.ref.replace('refs/heads/', '') + "/build");
+		console.log("http://192.168.84.153:8080/job/" + push.repository.owner.name + "-" + push.repository.name + "-" + push.ref.replace('refs/heads/', '') + "/build");
 	});
 
     res.end();
