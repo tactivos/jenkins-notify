@@ -7,9 +7,17 @@ app.get('/', function(req, res) {
 });
 
 app.post('/', function(req, res) {
-	console.log(req.body);
+	var body = '';
 
-	res.end();
+    req.on('data', function (data) {
+        body += data;
+    });
+
+    req.on('end', function () {
+    	console.log(body);
+    });	
+
+    res.end();
 });
 	
 app.listen(process.env.PORT || 3000);
