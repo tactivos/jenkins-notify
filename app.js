@@ -15,7 +15,7 @@ app.post('/', function(req, res) {
 	});
 
 	req.on('end', function(){
-		console.log(content);
+		console.log(JSON.parse(content));
 	});
 
     res.end();
