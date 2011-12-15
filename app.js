@@ -1,4 +1,5 @@
-var express = require('express');
+var express = require('express') 
+  , querystring = require('querystring');
 
 var app = module.exports = express.createServer();
 
@@ -15,7 +16,7 @@ app.post('/', function(req, res) {
 	});
 
 	req.on('end', function(){
-		console.log(JSON.parse(content));
+		console.log(JSON.parse(querystring.decode(content)));
 	});
 
     res.end();
