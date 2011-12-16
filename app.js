@@ -22,8 +22,8 @@ app.post('/', function(req, res) {
 		var push = JSON.parse(message['payload']);
 
 		
-		req.get("http://jenkins.mural.ly/job/" + push.repository.owner.name + "-" + push.repository.name + "-" + push.ref.replace('refs/heads/', '') + "/build")
-		   .pipe(res);
+		request.get("http://jenkins.mural.ly/job/" + push.repository.owner.name + "-" + push.repository.name + "-" + push.ref.replace('refs/heads/', '') + "/build")
+		   	   .pipe(res);
 	});
 });
 	
