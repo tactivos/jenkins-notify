@@ -1,4 +1,5 @@
 var express = require('express') 
+  , request = require('request')
   , querystring = require('querystring');
 
 var app = module.exports = express.createServer();
@@ -20,10 +21,10 @@ app.post('/', function(req, res) {
 		var message = querystring.decode(content);
 		var push = JSON.parse(message['payload']);
 
-		console.log("http://192.168.84.153:8080/job/" + push.repository.owner.name + "-" + push.repository.name + "-" + push.ref.replace('refs/heads/', '') + "/build");
+		
+		req.get("http://jenkins.mural.ly/job/" + push.repository.owner.name + "-" + push.repository.name + "-" + push.ref.replace('refs/heads/', '') + "/build")
+		   .pipe(res);
 	});
-
-    res.end();
 });
 	
 app.listen(process.env.PORT || 3000);
