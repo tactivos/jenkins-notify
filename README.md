@@ -17,4 +17,4 @@ environment variable set.
 
 ### Meta 
 
-Written by Johnny Halife for Tactivos under `do the whatever you want license`
+Written by @johnnyhalife for Tactivos under `do the whatever you want license`
