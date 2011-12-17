@@ -12,16 +12,13 @@ describe("Jenkins-Notify public API", function(){
 			gently.expect(response, 'send', function(payload){
 				payload.should.equal('OK');
 			});
-
-			gently.expect(response, 'end', function(){
-				response.statusCode.should.equal(200);
-			});
 			
 			// test
 			notify.default({}, response);
 
 			// assert
 			gently.verify();
+			response.statusCode.should.equal(200);
 		});
 	});
 
