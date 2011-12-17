@@ -6,19 +6,15 @@ var gently = global.GENTLY = new (require('gently'))
 describe("Jenkins-Notify public API", function(){ 
 	describe("GET /", function(){
 		it("should return 200 when requesting the default route (ping)", function(){
-			var response = new Object();
+			var response = { statusCode: 500 };
 			
 			// setup 
-			gently.expect(response, 'statusCode', function(code){
-				code.should.equal(200);
-			});
-
 			gently.expect(response, 'send', function(payload){
 				payload.should.equal('OK');
 			});
 
 			gently.expect(response, 'end', function(){
-				true.should.equal(true);
+				response.statusCode.should.equal(200);
 			});
 			
 			// test
