@@ -28,7 +28,7 @@ describe("Jenkins-Notify public API", function(){
 			var res = new Object();
 
 			gently.expect(gently.hijacked.request, "get", function(content){
-				content.should.equal(process.env.JENKINS_URL + "/jobs/defunkt-github-master/build");
+				content.should.equal(process.env.JENKINS_URL + "/job/defunkt-github-master/build");
 				return this;
 			});
 
