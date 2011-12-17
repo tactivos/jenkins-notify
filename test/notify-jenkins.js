@@ -13,6 +13,10 @@ describe("Jenkins-Notify public API", function(){
 				code.should.equal(200);
 			});
 
+			gently.expect(response, 'send', function(payload){
+				payload.should.equal('OK');
+			});
+
 			gently.expect(response, 'end', function(){
 				true.should.equal(true);
 			});
