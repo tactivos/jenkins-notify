@@ -1,0 +1,6 @@
+--require should
+--reporter list
+--ui bdd
+--slow 1000
+--timeout 3000
+ --globals has_more_expectations

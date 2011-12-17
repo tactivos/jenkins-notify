@@ -1,9 +1,14 @@
 {
-    "name": "jenkis-notify"
-  , "version": "0.0.1"
-  , "private": true
-  , "dependencies": {
-      "express": "2.5.1"
-    , "request": "2.2.9"
-  }
+	"name": "jenkis-notify"
+	, "version": "0.0.1"
+	, "private": true
+	, "dependencies": {
+	  "express": "2.5.1"
+	, "request": "2.2.9"
+	}
+	, "devDependencies": {
+		  "mocha":  ">= 0.3.6"
+		, "should": ">= 0.3.2"
+		, "gently": ">= 0.9.0"
+	}
 }

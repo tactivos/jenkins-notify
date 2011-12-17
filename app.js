@@ -1,31 +1,22 @@
 var express = require('express') 
-  , request = require('request')
-  , querystring = require('querystring');
+  , notify = require('./lib/notify-jenkins');
 
+/**
+* Configures the express application
+*/
 var app = module.exports = express.createServer();
 
-app.get('/', function(req, res) {
-	res.statusCode = 200;
-	res.end();
-});
+/**
+* Handles the get to the root of the site, the only purpose of this route
+* is to have a way of understanding if the service is up or down. (consider it as PING)
+*/
+app.get('/', notify.default);
 
-app.post('/', function(req, res) {
-	
-	var content = '';
-
-	req.on('data', function(chunk){
-  		content += chunk;
-	});
-
-	req.on('end', function(){
-		var message = querystring.decode(content);
-		var push = JSON.parse(message['payload']);
-
-		
-		request.get("http://jenkins.mural.ly/job/" + push.repository.owner.name + "-" + push.repository.name + "-" + push.ref.replace('refs/heads/', '') + "/build")
-		   	   .pipe(res);
-	});
-});
+/**
+* Handles the GitHub sent HTTP POST Hook for more information on how to configure this 
+* and or how to configure it at http://help.github.com/post-receive-hooks/.
+*/
+app.post('/', notify.send);
 	
 app.listen(process.env.PORT || 3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
