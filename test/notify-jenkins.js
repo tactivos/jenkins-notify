@@ -30,6 +30,12 @@ describe("Jenkins-Notify public API", function(){
 			gently.expect(gently.hijacked.request, "get", function(content){
 				var expectedUrl = process.env.JENKINS_URL + "/job/defunkt-github-master/build";
 				if(process.env.API_TOKEN) expectedUrl += ("?token=" + process.env.API_TOKEN);
+				
+				if(process.env.API_TOKEN_USER && process.env.API_TOKEN) {
+					var auth = process.env.API_TOKEN_USER + ":" + process.env.API_TOKEN;
+					expectedUrl = expectedUrl.replace("http://", "http://" + auth + "@");
+				}
+
 				content.should.equal(expectedUrl);
 				return this;
 			});
