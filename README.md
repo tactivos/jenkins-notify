@@ -10,6 +10,8 @@ canonical form for the project (using the sample data) will be
 
     defunkt-github-master # => {owner-project-branch}
 
+If API_TOKEN environment variable is assigned it will use it for performing the API calls to the Jenkins Remote Management API.
+
 ### Requirements
 
 Proudly built using [node.js](http://nodejs.org) using [npm](http://npmjs.org). You must have a __JENKINS_URL__
